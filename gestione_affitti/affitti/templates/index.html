@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Home</h1>
+
+  <p>Benvenuto in <em>Gestione Affitti</em></p>
+
+<h2>Dynamic content</h2>
+
+  <p>Sono presenti i seguenti dati:</p>
+  <ul>
+    <li><strong>Contratti:</strong> {{ num_contratti }}</li>
+    <li><strong>Immobili:</strong> {{ num_immobili }}</li>
+  </ul>
+
+{% endblock %}
