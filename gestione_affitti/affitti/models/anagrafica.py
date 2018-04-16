@@ -25,7 +25,7 @@ class PersonaFisica(models.Model):
         return '%s %s' % (self.cognome, self.nome)
 
     class Meta:
-        # abstract = True
+        abstract = True
         verbose_name = 'persona fisica'
         verbose_name_plural = 'persone fisiche'
 
@@ -47,6 +47,6 @@ class PersonaGiuridica(models.Model):
         return self.nome
 
     class Meta:
-        # abstract = True
+        abstract = True
         verbose_name = 'persona giuridica'
         verbose_name_plural = 'persone giuridiche'
