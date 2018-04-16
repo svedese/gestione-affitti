@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Indirizzo(models.Model):
+    nome = models.CharField(max_length=15, blank=True)
     toponomia = models.CharField(max_length=100, help_text='')
     numero_civico = models.PositiveSmallIntegerField(help_text='')
     comune = models.CharField(max_length=100, help_text='')
@@ -12,7 +13,7 @@ class Indirizzo(models.Model):
     paese = models.CharField(max_length=100, help_text='')
 
     def __str__(self):
-        return '%s (%s)' % (self.toponomia, self.comune)
+        return self.nome
 
     class Meta:
         ordering = ['toponomia']
@@ -21,15 +22,16 @@ class Indirizzo(models.Model):
 
 
 class Recapito(models.Model):
-    numero_mobile = models.CharField(max_length=15, blank=True)
-    numero_fisso = models.CharField(max_length=15, blank=True)
-    fax = models.CharField(max_length=15, blank=True)
+    nome = models.CharField(max_length=15, blank=True)
+    numero_mobile = models.CharField(max_length=25, blank=True)
+    numero_fisso = models.CharField(max_length=25, blank=True)
+    fax = models.CharField(max_length=25, blank=True)
     email = models.EmailField(verbose_name='email', blank=True)
     pec = models.EmailField(verbose_name='PEC', blank=True)
     url_sito = models.URLField(verbose_name='sito web', blank=True)
 
     def __str__(self):
-        return self.id
+        return self.nome
 
     class Meta:
         verbose_name = 'recapito'
