@@ -18,8 +18,8 @@ class PersonaFisica(models.Model):
     nascita_luogo = models.CharField(max_length=100, verbose_name='luogo di nascita', help_text='')
     codice_fiscale = models.CharField(max_length=16, help_text='max_length=16')
     # partita_iva = models.CharField(max_length=20, help_text='')
-    indirizzo = models.ForeignKey(Indirizzo, on_delete=models.SET_NULL, null=True, help_text='')
-    recapito = models.ForeignKey(Recapito, on_delete=models.SET_NULL, null=True, help_text='')
+    indirizzo = models.ForeignKey(Indirizzo, on_delete=models.SET_NULL, null=True, help_text='', blank=True)
+    recapito = models.ForeignKey(Recapito, on_delete=models.SET_NULL, null=True, help_text='', blank=True)
 
     def __str__(self):
         return '%s %s' % (self.cognome, self.nome)
@@ -38,10 +38,10 @@ class PersonaGiuridica(models.Model):
     ufficio = models.CharField(max_length=100, blank=True)
     rea = models.CharField(max_length=100, blank=True)
     costituzione_anno = models.CharField(max_length=4, blank=True)
-    capitale_sociale = models.FloatField(blank=True)
+    capitale_sociale = models.DecimalField(blank=True, max_digits=20, decimal_places=2)
     note = models.TextField(blank=True)
-    indirizzo = models.ForeignKey(Indirizzo, on_delete=models.SET_NULL, null=True, help_text='')
-    recapito = models.ForeignKey(Recapito, on_delete=models.SET_NULL, null=True, help_text='')
+    indirizzo = models.ForeignKey(Indirizzo, on_delete=models.SET_NULL, null=True, help_text='', blank=True)
+    recapito = models.ForeignKey(Recapito, on_delete=models.SET_NULL, null=True, help_text='', blank=True)
 
     def __str__(self):
         return self.nome
